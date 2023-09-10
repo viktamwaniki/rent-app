@@ -1,7 +1,3 @@
-Certainly! Here's an example README.md for a Rental Payment App with a database, including methods for adding rent payments, dates, and house locations to the database.
-
----
-
 # Rental Payment App
 
 The Rental Payment App is a command-line application that helps you manage rental payments and property information. With this app, you can easily track rent payments, payment dates, and property locations in a database.
@@ -17,7 +13,6 @@ The Rental Payment App is a command-line application that helps you manage renta
   - [Adding a Property](#adding-a-property)
   - [Recording Rent Payments](#recording-rent-payments)
   - [Viewing Tenant Information](#viewing-tenant-information)
-  - [Generating Payment Reports](#generating-payment-reports)
 - [Database Schema](#database-schema)
 - [Contributing](#contributing)
 - [License](#license)
