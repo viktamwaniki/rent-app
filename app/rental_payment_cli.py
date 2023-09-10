@@ -3,19 +3,29 @@ from sqlalchemy.orm import sessionmaker
 from models import Tenant 
 
 
-engine = create_engine('sqlite:///app/rental_payment.db')
-
-
+engine = create_engine('sqlite:///rental_payment.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-new_tenant = Tenant(name="John Doe")
-session.add(new_tenant)
-session.commit()
+def add_tenant():
+    tenant_name = input("Enter the tenant's name: ")
+    new_tenant = Tenant(name=tenant_name)
+    session.add(new_tenant)
+    session.commit()
+    print(f'Tenant "{tenant_name}" has been added to the database.')
+add_tenant()
 
-retrieved_tenant = session.query(Tenant).filter_by(name="John Doe").first()
+def remove_tenant():
+    tenant_name = input("Enter the tenant's name to remove: ")
+    tenant_to_remove = session.query(Tenant).filter_by(name=tenant_name).first()
 
-print("Tenant ID:", retrieved_tenant.id)
-print("Tenant Name:", retrieved_tenant.name)
+    if tenant_to_remove:
+        session.delete(tenant_to_remove)
+        session.commit()
+        print(f'Tenant "{tenant_name}" has been removed from the database.')
+    else:
+        print(f'Tenant "{tenant_name}" not found in the database.')
+remove_tenant()
+
 
 session.close()
